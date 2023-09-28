@@ -1,0 +1,145 @@
+import { Callout } from "nextra/components";
+import { useState } from "react";
+import styles from "../../../../../components/counters.module.css";
+
+The key to understand tbhe useEffect hoos is to understand the lifecycle of a React Component, which means understanding the 3 steps every render SHOULD execute.
+
+> Mount -> Update -> Unmount
+
+Declaring a state variable is as simple as calling `useState` with some initial state value, like so: `useState(initialStateValue)`.
+
+<Callout type='info'>
+In react 18 update the `<StrictMoode>` makes the react execute some testings prior the main rendering causing 2 renders each beginning (disable or comment it, if needed).
+</Callout>
+
+```jsx {2,3}
+const DeclareStateVar = () => {
+  const [first] = useState(initialStateValue);
+  return <div> State variable is {first}</div>;
+};
+```
+
+Updating a state variable is as simple as invoking the updater function returned by the `useState` invocation: `const [stateValue, updaterFn] = useState(initialStateValue);`.
+
+```jsx showLineNumbers {1,3-4,9,11-12}
+import { useState } from "react";
+export const UpdateStateVar = () => {
+  const [idade, setIdade] = useState(25);
+  const handleClickO = () => setIdade(idade + 1);
+  const handleClickY = () => setIdade(idade - 1);
+
+  return (
+    <div>
+      Hoje eu tenho {age} anos
+      <div>
+        <button onClick={handleClickO}>Ficar mais velho!</button>
+        <button onClick={handleClickY}>Rejuvenescer!</button>
+      </div>
+    </div>
+  );
+};
+```
+
+Renders:
+
+export const UpdateStateVar = () => {
+const [idade, setIdade] = useState(25);
+const handleClickO = () => setIdade(idade + 1);
+const handleClickY = () => setIdade(idade - 1);
+
+return (
+
+<div className='p-6 bg-[#11161b] shadow-lg rounded-xl dark:bg-[#1d2429] '>
+  Hoje eu tenho <strong>{idade}</strong> anos
+  <div className='flex justify-evenly mt-2 text-base font-medium'>
+    <button onClick={handleClickO} className={styles.counter}>
+      Ficar mais velho!
+    </button>
+    <br />
+    <button onClick={handleClickY} className={styles.counter}>
+      Rejuvenescer!
+    </button>
+  </div>
+</div>
+); };
+
+<UpdateStateVar />
+
+## Use object state variable
+
+As opposed to strings and numbers, you could also use an object as the initial value passed to `useState`.
+
+<Callout type='default'>
+  Note that you have to pass the entire object to the `useState` updater
+  function because the object is replaced, not merged.
+</Callout>
+
+```jsx
+// 🐢 setState (object merge) vs useState (object replace)
+// assume initial state is {name: "Ohans"}
+
+setState({ age: "unknown" });
+// new state object will be
+// {name: "Ohans", age: "unknown"}
+
+useStateUpdater({ age: "unknown" });
+// new state object will be
+// {age: "unknown"} - initial object is replaced
+```
+
+```jsx showLineNumbers {2,4-7,14-15}
+import { useState } from "react";
+export const StateObject = () => {
+  const [state, setState] = useState({ age: 19, siblingsNum: 4 });
+  const handleClick = (val) =>
+    setState({
+      ...state,
+      [val]: state[val] + 1,
+    });
+  const { age, siblingsNum } = state;
+  return (
+    <div>
+      <p>Today I am {age} Years of Age</p>
+      <p>I have {siblingsNum} siblings</p>
+      <div>
+        <button onClick={handleClick.bind(null, "age")}>Get older!</button>
+        <button onClick={handleClick.bind(null, "siblingsNum")}>
+          More siblings!
+        </button>
+      </div>
+    </div>
+  );
+};
+```
+
+Renders:
+
+export const StateObject = () => {
+  const [state, setState] = useState({ age: 25, siblingsNum: 1 });
+  const handleClick = (val) =>
+    setState({ ...state, [val]: state[val] + 1, });
+  const { age, siblingsNum } = state;
+
+return (
+
+<div class='p-6  bg-[#111b1b] shadow-lg rounded-xl dark:bg-[#1d2229]'>
+  <h3 class='text-s '>
+    <p>
+      Today I am <strong>{age}</strong> Years of Age <br />I have{" "}
+      <strong>{siblingsNum}</strong> siblings
+    </p>
+  </h3>
+  <div className='flex justify-evenly mt-2 text-base font-medium'>
+    <button onClick={handleClick.bind(null, "age")} className={styles.counter}>
+      Get older!
+    </button>
+    <button
+      onClick={handleClick.bind(null, "siblingsNum")}
+      className={styles.counter}>
+      More siblings!
+    </button>
+  </div>
+</div>
+); };
+
+<StateObject />

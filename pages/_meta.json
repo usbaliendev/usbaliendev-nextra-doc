@@ -1,15 +1,34 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "index": {
+    "type": "page",
+    "title": "Intro",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "docs": {
+    "type": "page",
+    "title": "Documentation"
+  },
   "about": {
+    "type": "page",
     "title": "About",
-    "type": "page"
+    "theme": {
+      "typesetting": "article"
+    }
   },
   "contact": {
-    "title": "Contact ↗",
+    "title": "Contact me ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
+    "href": "https://usbaliendev.com",
     "newWindow": true
+  },
+  "404": {
+    "type": "page",
+    "theme": {
+      "timestamp": false,
+      "typesetting": "article"
+    }
   }
 }

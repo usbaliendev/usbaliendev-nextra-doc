@@ -1,0 +1,501 @@
+import { Callout } from "nextra/components";
+
+# Cheatsheet
+
+HTML Cheatsheet is a valuable resource for anyone working with HTML, providing quick access to common elements, attributes, tags, forms, and containers. Whether you are a beginner or an experienced developer, this cheat sheet can save you time and improve your productivity. It is an essential tool for anyone working with HTML, providing a comprehensive collection of code snippets and examples at your fingertips.
+
+## General
+
+### Page structure
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>usbaliendev</title>
+  </head>
+  <body></body>
+</html>
+```
+
+### Comment
+
+```html
+<!-- this is a comment -->
+```
+
+<Callout type='default'>
+  This code will be ignored. Comments are generally a bad idea, your code should
+  be explicit enough as it is.
+</Callout>
+
+## Text Tags
+
+### Headings
+
+```html
+<h1>usbaliendev</h1>
+<h2>usbaliendev</h2>
+<h3>usbaliendev</h3>
+<h4>usbaliendev</h4>
+<h5>usbaliendev</h5>
+<h6>usbaliendev</h6>
+```
+
+<Callout type='default'>
+  Note: Only h1, h2, h3, h4, h5, and h6 exist, you should only have one h1 on
+  your page.
+</Callout>
+
+### Paragraph
+
+```html
+<p>usbaliendev teaches busy women how to code.</p>
+```
+
+### Unordered Lists
+
+```html
+<ul>
+  <li>usbaliendev Front-end</li>
+  <li>usbaliendev Back-end</li>
+</ul>
+```
+
+<Callout  type='default'  >
+  Note: `<ul>` can only have `<li>` as direct descendants.
+</Callout>
+
+### Ordered List
+
+```html
+<ol>
+  <li>usbaliendev Front-end</li>
+  <li>usbaliendev Back-end</li>
+</ol>
+```
+
+<Callout type='default'>
+  Adds numbers in front of each list item. Note: We rarely use this one as it's
+  hard to style.
+</Callout>
+
+### Nested lists
+
+```html
+<ul>
+  <li>usbaliendev Basics</li>
+  <li>usbaliendev Plus</li>
+  <li>
+    <strong>usbaliendev Pro</strong>
+    <br />
+    <ul>
+      <li>usbaliendev Basics</li>
+      <li>usbaliendev Plus</li>
+      <li>usbaliendev Responsive</li>
+      <li>usbaliendev React</li>
+    </ul>
+  </li>
+</ul>
+```
+
+### Link
+
+```html
+<a href="https://usbaliendev.com/">usbaliendev</a>
+<a href="https://usbaliendev.com/" target="_blank">usbaliendev</a>
+<a href="https://usbaliendev.com/" target="_blank" title="usbaliendev Website"
+  >usbaliendev</a
+>
+```
+
+<Callout type='default'>
+  Adds a link to the page. Note: target="_blank" opens the link in a new window.
+</Callout>
+
+### Mailto link
+
+```html
+<a href="mailto:team@usbaliendev.io">Send us an email</a>
+```
+
+### Anchor link
+
+```html
+<a href="#important"> Jump to the heading below </a>
+<div id="important">This is a note</div>
+```
+
+<Callout type='default'>Link to a section on the same page</Callout>
+
+## Separators
+
+### Line Break
+
+```html
+This is a line codebreak <br />
+Next line here
+```
+
+### Horizontal Rule
+
+```html
+This is a line codebreak
+<hr />
+Next line here
+```
+
+## Attributes
+
+### Classes
+
+```html
+<a href="https://usbaliendev.com/" class="website-url">usbaliendev</a>
+<div class="header important">usbaliendev</div>
+```
+
+<Callout type='default'>
+  Classes are generally used to select elements from CSS. Name your classes
+  using clear English words. If you want a class name to include multiple words,
+  separate each word with a hyphen - . If you want to use multiple class names,
+  use a space in between. Class names should be lower cased.
+</Callout>
+
+### Ids
+
+```html
+<a href="https://usbaliendev.com" id="website-link">usbaliendev.com</a>
+```
+
+<Callout type='default'>
+  Ids are generally used to select elements from JavaScript and can only be used
+  once. Name your ids using clear English words. If you want an id name to
+  include multiple words, separate each word with a hyphen -. If you want to use
+  multiple id names, use a space in between. Id names should be lowercased.
+</Callout>
+
+## Containers
+
+### Div
+
+```html
+<div>usbaliendev</div>
+<div class="coding-workshop">usbaliendev</div>
+```
+
+<Callout type='default'>
+  Generally used to add a class around some content and target that class from
+  CSS. It doesn't add any styling on its own. Note: Block element
+</Callout>
+
+### Span
+
+```html
+<span>usbaliendev</span> <span class="best-workshop">usbaliendev</span>
+```
+
+<Callout type='default'>
+  Generally used to add a class around some content (especially text and images)
+  and target that class from CSS. It doesn't add any styling on its own. Note:
+  Inline element
+</Callout>
+
+### Header
+
+```html
+<header class="page-header">
+  <h1>usbaliendev Workshops</h1>
+</header>
+```
+
+<Callout type='default'>
+  It typically groups the introduction of the page or the navigation. It doesn't
+  add any styling on its own. Note: Block element
+</Callout>
+
+### Footer
+
+```html
+<footer>
+  <p>© usbaliendev</p>
+</footer>
+```
+
+<Callout type='default'>
+  It typically groups information about the author of the section, copyright
+  data, or links to related documents. It doesn't add any styling on its own.
+  Note: Block element
+</Callout>
+
+### Section
+
+```html
+<section class="workshop-information">
+  <h2>usbaliendev</h2>
+  <p>im a fullstack javascript dev</p>
+</section>
+```
+
+<Callout  type='default'  >
+  It typically groups information on a page. It's very similar to `<div>` but less commonly used. It doesn't add any styling on its own.
+  Note: Block element
+</Callout>
+
+## Media Tags
+
+### Image
+
+```html
+<img
+  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/083/182/original/cat.png?1685030491"
+  alt="Image description"
+  width="400" />
+```
+
+<Callout type='default'>
+  Adds an image to the page. Note: This is a self-closing tag.
+</Callout>
+
+### Video
+
+```html
+<video src="https://video-url" controls></video>
+```
+
+<Callout type='default'>Adds a video to the page.</Callout>
+
+### Audio
+
+```html
+<audio controls src="https://url-to-audio-file.mp3"></audio>
+```
+
+<Callout type='default'>Adds audio to the page.</Callout>
+
+## Form Tags
+
+### Form
+
+```html
+<form action="/submit">
+  <label for="name">Enter your name: </label>
+  <input type="text" name="name" id="name" required />
+  <label for="email">Enter your email: </label>
+  <input type="email" name="email" id="email" required />
+  <input type="submit" value="Subscribe!" />
+</form>
+```
+
+<Callout type='default'>
+  Adds a form to the page. The action depends on where you want the form data to
+  be sent to (usually provided by a backend developer)
+</Callout>
+
+### Inputs
+
+```html
+<label for="name">Name (4 to 8 characters):</label>
+<input type="text" id="name" />
+```
+
+<Callout type='default'>
+  Creates a form text input. Note: Self-closing tag
+</Callout>
+
+### Button
+
+```html
+<button class="signup-button">Sign up now</button>
+```
+
+<Callout type='default'>
+  Adds a button to the page. Note: Inline element
+</Callout>
+
+### Radio inputs
+
+```html
+<label>What pets do you have?</label>
+<input type="radio" name="pet" id="cats" value="cats" checked />
+<label for="cats">Cats</label>
+<input type="radio" name="pet" id="dogs" value="dogs" />
+<label for="dogs">Dogs</label>
+```
+
+### Checkbox inputs
+
+```html
+<label>What pets do you have?</label>
+<div>
+  <input type="checkbox" name="pets" id="cats" value="cats" />
+  <label for="cats">Cats</label>
+</div>
+<div>
+  <input type="checkbox" name="pets" id="dogs" value="dogs" />
+  <label for="dogs">Dogs</label>
+</div>
+```
+
+### Select element
+
+```html
+<label for="countries">Which country would you like to travel to?</label>
+<select id="countries">
+  <option value="">Select a country</option>
+  <option value="france">Brazil</option>
+  <option value="italy">Korea</option>
+  <option value="usa">Turkey</option>
+  <option value="japan">Japan</option>
+</select>
+```
+
+## Styling tags
+
+### Strong
+
+```html
+<strong>usbaliendev Workshops</strong>
+```
+
+<Callout type='default'>Makes the content bold. Note: Inline element</Callout>
+
+### Small
+
+```html
+<small>usbaliendev Workshops</small>
+```
+
+<Callout type='default'>
+  Makes the text within it one font size smaller. Note: Inline element
+</Callout>
+
+### Em
+
+```html
+<em>usbaliendev Workshops</em>
+```
+
+<Callout type='default'>Makes the text italic. Note: Inline element</Callout>
+
+## Table
+
+### Table structure
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Nationality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Matt</td>
+      <td>Delac</td>
+      <td>French</td>
+    </tr>
+    <tr>
+      <td>Amanda</td>
+      <td>Smith</td>
+      <td>American</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## CSS in HTML
+
+### Internal CSS
+
+```html
+<head>
+  <style>
+    body {
+      background: #f8f5ff;
+    }
+
+    h1 {
+      color: purple;
+      text-align: center;
+    }
+  </style>
+</head>
+```
+
+<Callout  type='default'  >
+  Add a style element inside your `<head>` to include CSS in your HTML file. You should ideally have a maximum of 1 style element on your page. You don't need a style element if you're using external CSS.
+</Callout>
+
+### External CSS
+
+```html
+<head>
+  <link rel="stylesheet" href="style.css" />
+</head>
+```
+
+<Callout type='default'>
+  Link to an external CSS file, add multiple link tags to link to multiple CSS
+  files. Note: Link is a self-closing tag
+</Callout>
+
+## JavaScript in HTML
+
+### Internal JavaScript
+
+```html
+<body>
+  <h1>usbaliendev</h1>
+  <script>
+    alert("Hello usbaliendev");
+  </script>
+</body>
+```
+
+<Callout type='default'>
+  Add your script tag to the bottom of your body. Anything inside script is
+  JavaScript.
+</Callout>
+
+### External JavaScript
+
+```html
+<body>
+  <h1>usbaliendev</h1>
+  <script src="app.js"></script>
+</body>
+```
+
+<Callout type='default'>
+  Link to your external JavaScript file at the bottom of your body. The script
+  element doesn't include any content but needs to be closed. It is not a
+  self-closing tag.
+</Callout>
+
+## SEO
+
+### Title element
+
+```html
+<title>The title of your website - Brand</title>
+```
+
+<Callout type='default'>
+  Determine the document's title that will be shown in a browser’s title bar or
+  a page's tab More info
+</Callout>
+
+### Meta description
+
+```html
+<head>
+  <meta
+    name="description"
+    content="This is an example of a meta description. This will often show up in search results." />
+</head>
+```

@@ -1,0 +1,24 @@
+import { Card, Cards } from "nextra/components";
+import Arr from "./hooks/_meta.json";
+
+# React Hooks
+
+Use the following buttons to navigate throught content
+
+export const CmdLinks = () => {
+  var Obj = JSON.parse(JSON.stringify(Arr));
+  // console.log(typeof Obj, Obj);
+  return (
+    <Cards>
+      {Object.keys(Obj).map((key) => (
+        <Card
+          key={key}
+          title={`${Obj[key]}`}
+          href={`/docs/frameworks/react/hooks/${key}`}
+        />
+      ))}
+    </Cards>
+  );
+};
+
+<CmdLinks />

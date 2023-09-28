@@ -1,0 +1,16 @@
+import { Card, Cards } from "nextra/components";
+import cmdArr from "./cmd/_meta.json";
+
+export const CmdLinks = () => {
+  var cmdObj = JSON.parse(JSON.stringify(cmdArr));
+  // console.log(typeof cmdObj, cmdObj);
+  return (
+    <Cards>
+      {Object.keys(cmdObj).map((key) => (
+        <Card key={key} title={`${cmdObj[key]}`} href={`/docs/cmd/${key}`} />
+      ))}
+    </Cards>
+  );
+};
+
+<CmdLinks />

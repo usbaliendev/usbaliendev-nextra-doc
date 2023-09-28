@@ -1,0 +1,13 @@
+{
+  "useSta": "useState",
+  "useEff": "useEffect",
+  "useCtxt": "useContext",
+  "useLe": "useLayoutEffect",
+  "useRed": "useReducer",
+  "useCall": "useCallback",
+  "useMemo": "useMemo",
+  "useRef": "useRef",
+  "useTrtn": "useTransition",
+  "useDefV": "useDeferredValue",
+  "useId": "useId"
+}

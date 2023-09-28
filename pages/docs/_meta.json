@@ -1,0 +1,25 @@
+{
+  "index": "Introduction",
+  "-- Frame": {
+    "type": "separator",
+    "title": "Frameworks | Languages"
+  },
+  "frameworks": "🧩 ⏐ Frameworks",
+  "mframeworks": "🧩 ⏐ Mobile Frameworks",
+  "html": "HTML",
+  "-- Style": {
+    "type": "separator",
+    "title": "Style | Notation"
+  },
+  "styles": "🖌️ | Styles",
+  "markdown": "Ⓜ️ | Markdown",
+  "uiux": "UI/UX",
+  "-- More": {
+    "type": "separator",
+    "title": "More"
+  },
+  "cmd": "⚙️ ⏐ Commands/Snippets",
+  "reactexp": {
+    "display": "hidden"
+  }
+}

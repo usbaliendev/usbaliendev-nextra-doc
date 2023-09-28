@@ -1,0 +1,16 @@
+import { Card, Cards } from "nextra/components";
+import Arr from "./styles/_meta.json";
+
+export const StyleLinks = () => {
+  var cmdObj = JSON.parse(JSON.stringify(Arr));
+  // console.log(typeof cmdObj, cmdObj);
+  return (
+    <Cards>
+      {Object.keys(cmdObj).map((key) => (
+        <Card key={key} title={`${cmdObj[key]}`} href={`/docs/styles/${key}`} />
+      ))}
+    </Cards>
+  );
+};
+
+<StyleLinks />
