@@ -1,111 +1,588 @@
 import { Callout } from "nextra/components";
 
-CSS Cheatsheets got you covered! We offer the best CSS cheat sheet that covers everything from basic syntax to specific selectors. Our cheat sheet is designed to help you quickly reference the most commonly used CSS techniques for styling HTML elements. Whether you're new to CSS or an experienced developer, our cheat sheet is a valuable resource. Check them out today!
+CSS Cheatsheets got you covered! We offer the best CSS cheat sheet that covers everything from basic syntax to specific selectors. Our cheat sheet is designed to help you quickly reference the most commonly used CSS techniques for styling css elements. Whether you're new to CSS or an experienced developer, our cheat sheet is a valuable resource. Check them out today!
 
 ## Selectors
 
-###
+### Element selector
 
-```html
+```css
+a {
+  color: red;
+}
 
+h1 {
+  text-align: center;
+}
 ```
 
-<Callout  type='default'  >
+### Class selector
 
-</Callout>
+```css
+/* All elements with class="spacious" */
+.spacious {
+  margin: 20px;
+}
+/* All <li> elements with class="spacious" */
+li.spacious {
+  margin: 20px;
+}
+/* All <li> elements with a class list that includes both "spacious" and "elegant" */
+/* For example, class="elegant retro spacious" */
+li.spacious.elegant {
+  margin: 20px;
+}
+/* All <li> elements OR All elements with class="spacious" */
+li,
+.spacious {
+  margin: 20px;
+}
+```
+
+### ID selector
+
+```css
+#demo {
+  border: red 2px solid;
+}
+```
+
+<Callout type='default'>Note: You should rarely/never use that one</Callout>
+
+### Pseudo-classes selector
+
+```css
+/* Any button over which the user's pointer is hovering */
+button:hover {
+  color: blue;
+}
+/* Applied when the user has already visited the link */
+a:visited {
+  color: red;
+}
+```
 
 ## Colors
 
-###
+### Color property
 
-```html
-
+```css
+p {
+  color: #00ff00;
+}
 ```
 
-<Callout  type='default'  >
+### Background
 
+```css
+.header {
+  background: green;
+}
+```
+
+<Callout type='default'>You can also use an image as a background.</Callout>
+
+### Native colors
+
+```css
+h1 {
+  color: blueviolet;
+}
+```
+
+<Callout type='default'>
+  Note: We generally only use black or white. Other colors such as red, blue,
+  green are only good for testing purposes. You should use Hexadecimal values
+  instead.
 </Callout>
+
+### Hexadecimal colors
+
+```css
+h1 {
+  color: #885df1;
+}
+```
+
+<Callout type='default'>
+  Use a color picker to find the color you need. Note: #000000 is black, #ffffff
+  is white. #ffffff is the same as #fff, #FFFFFF or #fff or white.
+</Callout>
+
+### RGB colors
+
+```css
+/* without transparency */
+p {
+  color: rgb(135, 93, 241);
+}
+/* with transparency */
+h1 {
+  color: rgba(135, 93, 241, 0.5);
+}
+```
+
+<Callout type='default'>
+  The RGB color model defines a given color according to its red, green, and
+  blue components. An optional alpha component represents the color's
+  transparency. The first 3 values should be between 0 and 255 and the fourth
+  between 0 and 1. 0 being completely transparent.
+</Callout>
+
+### Gradient
+
+```css
+.footer {
+  background: linear-gradient(#e66465, #9198e5);
+}
+```
+
+<Callout type='default'>
+  Multi-position color stop: A gradient tilted 45 degrees, with a red
+  bottom-left half and a blue top-right half, with a hard line where the
+  gradient changes from red to blue linear-gradient(45deg, red 0 50%, blue 50%
+  100%);
+</Callout>
+
+### CSS Background Size
+
+```css
+body {
+  background-size: cover;
+}
+img {
+  background-size: 50%;
+}
+```
+
+### CSS Background Image
+
+```css
+body {
+  background-image: url("https://i.notretemps.com/1400x787/smart/2022/06/13/albi.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
+}
+```
 
 ## Box
 
-###
+### Border
 
-```html
-
+```css
+.header {
+  border: 1px solid #885df1;
+}
 ```
 
-<Callout  type='default'  >
-
+<Callout type='default'>
+  First value is the thickness, second one the style (none | hidden | dotted |
+  dashed | solid | double | groove | ridge | inset | outset), and third one is
+  the color.
 </Callout>
+
+### Margin
+
+```css
+/* Margin around the element */
+.box-1 {
+  margin: 10px;
+}
+/* Margin left only */
+.box-2 {
+  margin-left: 10px;
+}
+/* 10px margin on top and bottom, 5px on the sides */
+.box-3 {
+  margin: 10px 5px;
+}
+/* 20px margin top, 15px margin right, 10px margin bottom and 5px margin left */
+.box-4 {
+  margin: 20px 15px 10px 5px;
+}
+```
+
+<Callout type='default'>Space outside an element.</Callout>
+
+### Padding
+
+```css
+/* padding around the element */
+.box-1 {
+  padding: 10px;
+}
+/* padding left only */
+.box-2 {
+  padding-left: 10px;
+}
+/* 10px padding on top and bottom, 5px on the sides */
+.box-3 {
+  padding: 10px 5px;
+}
+/* 20px padding top, 15px padding right, 10px padding bottom and 5px padding left */
+.box-4 {
+  padding: 20px 15px 10px 5px;
+}
+```
+
+<Callout type='default'>Space inside an element.</Callout>
+
+### Width
+
+```css
+.box-1 {
+  width: 100%;
+}
+.box-2 {
+  max-width: 100px;
+}
+.box-3 {
+  min-width: 200px;
+}
+```
+
+### Height
+
+```css
+.box-1 {
+  height: 100%;
+}
+.box-2 {
+  max-height: 100px;
+}
+.box-3 {
+  min-height: 200px;
+}
+```
+
+### Radius
+
+```css
+/* Light rounded corner all around the element */
+.box-1 {
+  border-radius: 20px;
+}
+/* Rounded corner top left and right only */
+.box-2 {
+  border-radius: 50% 50% 0 0;
+}
+```
+
+<Callout type='default'>
+  The border-radius CSS property rounds the corners of an element's outer border
+  edge.
+</Callout>
+
+### Box shadow
+
+```css
+.box {
+  box-shadow: 10px 5px 5px red;
+}
+```
+
+<Callout type='default'>
+  The third value is the blur radius and the last value is the shadow color.
+</Callout>
+
+### Transform
+
+```css
+/* Function values */
+transform: rotate(0.5);
+transform: rotateX(10deg);
+transform: rotateY(10deg);
+transform: rotateZ(10deg);
+transform: translate(12px, 50%);
+transform: translate3d(12px, 50%, 3em);
+transform: translateX(2em);
+transform: translateY(3in);
+transform: translateZ(2px);
+transform: scale(2, 0.5);
+transform: skew(30deg, 20deg);
+
+/* Multiple function values */
+transform: translateX(10px) rotate(10deg) translateY(5px);
+transform: perspective(500px) translate(10px, 0, 20px) rotateY(3deg);
+```
 
 ## Text
 
-###
+### Text align
 
-```html
-
+```css
+h1 {
+  text-align: center;
+}
 ```
 
-<Callout  type='default'  >
-
+<Callout type='default'>
+  text-align: left | right | center | justify | initial | inherit;
 </Callout>
+
+### Text decoration
+
+```css
+h1 {
+  text-decoration: underline;
+}
+```
+
+<Callout type='default'>
+  none: no line is drawn, and any existing decoration is removed. underline:
+  draws a 1px line across the text at its baseline. line-through: draws a 1px
+  line across the text at its “middle” point. overline: draws a 1px line across
+  the text, directly above its “top” point. inherit: inherits the decoration of
+  the parent.
+</Callout>
+
+### Text transform
+
+```css
+h1 {
+  text-transform: uppercase;
+}
+```
+
+<Callout type='default'>
+  Note: text-transform: none | capitalize | uppercase | lowercase | initial |
+  inherit;
+</Callout>
+
+### Line height
+
+```css
+h1 {
+  line-height: 28px;
+}
+p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+```
+
+<Callout type='default'>
+  Note: We generally use a multiplier such as 1.5 which making the line height
+  1.5 times higher than the font size
+</Callout>
+
+### Font style
+
+```css
+h1 {
+  font-style: italic;
+}
+```
+
+<Callout type='default'>
+  Note: font-style: normal | italic | oblique | initial | inherit;
+</Callout>
+
+### Font weight
+
+```css
+h1 {
+  font-weight: normal;
+}
+p {
+  font-weight: 700;
+}
+a {
+  font-weight: 100;
+}
+```
+
+<Callout type='default'>
+  Note: font-weight: normal | bold | bolder | lighter | number | initial |
+  inherit; It can also be a value between 100 | 200 | 300 | 400 | 500 | 600 |
+  700 | 800 | 900 where 100 is thin and 900 is extra bold
+</Callout>
+
+### Font size
+
+```css
+body {
+  font-size: 18px;
+}
+```
+
+### Font family
+
+```css
+body {
+  font-family: Georgia, serif;
+}
+```
 
 ## List
 
-###
+### List style
 
-```html
-
+```css
+/* Remove the list bullets point and default spacing */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* Horizontal list */
+li.students {
+  display: inline;
+}
 ```
-
-<Callout  type='default'  >
-
-</Callout>
 
 ## Layout
 
-###
+### Display
 
-```html
-
+```css
+img {
+  display: block;
+}
+.heading {
+  display: inline;
+}
 ```
 
-<Callout  type='default'  >
-
+<Callout type='default'>
+  Note: Each element is by default inline or block element. A block element
+  creates an invisible line before and after. An inline element doesn't.
 </Callout>
+
+### Position
+
+```css
+.heading {
+  position: relative;
+  top: -10px;
+  left: 20px;
+}
+```
+
+<Callout type='default'>
+  Note: Position can be static | relative | fixed | absolute | sticky. By
+  default, elements are static.
+</Callout>
+
+### Center element
+
+```css
+img {
+  display: block;
+  margin: 0 auto;
+}
+```
+
+### Flexbox
+
+```css
+.container {
+  display: flex;
+  flex-direction: row | row-reverse | column | column-reverse; /* optional */
+  justify-content: flex-start | flex-end | center | space-between | space-around
+    | space-evenly | start | end | left | right; /* optional */
+  flex-direction: row | column; /* optional */
+}
+```
+
+<Callout type='default'>
+  Align elements within the container horizontally
+</Callout>
+
+### Responsive image
+
+```css
+img {
+  max-width: 100%;
+  height: auto;
+}
+```
+
+### Grids
+
+```css
+.image-gallery {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(2, 2fr 1fr);
+  grid-gap: 20px;
+}
+.image-gallery img {
+  width: 100%;
+}
+```
 
 ## Mouse
 
-###
+### Cursor
 
-```html
-
+```css
+button:hover {
+  cursor: pointer;
+}
 ```
 
-<Callout  type='default'  >
+<Callout type='default'>
+auto | default | none | context-menu | help | pointer | progress | wait | cell | crosshair | text | vertical-text | alias | copy | move | no-drop | not-allowed | e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out | grab | grabbing
+
+Note: Pointer is the most common one.
 
 </Callout>
 
 ## Advanced CSS
 
-###
+### CSS Variables
 
-```html
-
+```css
+:root {
+  --main-branding-color: #885df1;
+}
+h1 {
+  color: var(--main-branding-color);
+}
 ```
 
-<Callout  type='default'  >
+<Callout type='default'>
+  Note: Useful to store font families, colors or sizes.
+</Callout>
 
+### Media queries
+
+```css
+@media (max-width: 900px) {
+  h1 {
+    font-size: 18px;
+    text-align: center;
+  }
+  .footer {
+    display: none;
+  }
+}
+@media (min-width: 900px) {
+  h1 {
+    color: red;
+  }
+}
+```
+
+<Callout type='default'>
+  Media queries are useful when you want to apply CSS to specific resolution
+  breakpoints to make your website more responsive.
 </Callout>
 
 ## Animations
 
-###
+### Transitions
 
-```html
-
+```css
+a {
+  transition: all 200ms ease;
+  opacity: 1;
+  color: blue;
+}
+a:hover {
+  opacity: 0.7;
+  color: red;
+}
 ```
-
-<Callout  type='default'  >
-
-</Callout>

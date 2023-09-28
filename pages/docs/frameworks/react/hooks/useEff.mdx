@@ -1,0 +1,257 @@
+import { Callout } from "nextra/components";
+import { useEffect, useState } from "react";
+import styles from "../../../../../components/counters.module.css";
+
+With `useEffect`, you invoke side effects from within functional components, which is an important concept to understand in the React Hooks era.
+
+- `useEffect` accepts a function which can perform any side effects.
+- Call signature: `useEffect(effectFunction, arrayDependencies)`
+
+### Can be used to
+
+1. Cleaning up an effect
+2. Timing of effects
+3. Conditionally firing an effect
+
+## Basic side effect
+
+```jsx showLineNumbers
+export const BasicEffect = () => {
+  const [age, setAge] = useState(0);
+  const handleClick = () => setAge(age + 1);
+  useEffect(() => {
+    document.title = "You are " + age + " years old!";
+  });
+  return (
+    <div>
+      <p> Look at the title of the current tab in your browser </p>
+      <button onClick={handleClick}>Update Title!! </button>
+    </div>
+  );
+};
+```
+
+export const BasicEffect = () => {
+  const [age, setAge] = useState(0);
+  const handleClick = () => setAge(age + 1);
+  useEffect(() => {
+    document.title = "You are " + age + " years old!";
+  });
+  return (
+    <div className='p-6 bg-[#11161b] shadow-lg rounded-xl dark:bg-[#1d2229]'>
+      <p> Look at the title of the current tab in your browser </p>
+      <button className={styles.counter} onClick={handleClick}>
+        Update Title!
+      </button>
+    </div>
+  );
+};
+
+<BasicEffect />
+
+## Effect with cleanup
+
+It’s pretty common to clean up an effect after some time. This is possible by returning a function from within the effect function passed to `useEffect`. Below is an example with `addEventListener`.
+
+```jsx showLineNumbers
+export const EffectCleanup = () => {
+  useEffect(() => {
+    const clicked = () => console.log("window clicked");
+    window.addEventListener("click", clicked);
+
+    // return a clean-up function
+    return () => {
+      window.removeEventListener("click", clicked);
+    };
+  }, []);
+
+  return (
+    <div>
+      When you click the window you'll find a message logged to the console
+    </div>
+  );
+};
+```
+
+Renders:
+
+export const EffectCleanup = () => {
+  useEffect(() => {
+    const clicked = () => console.log("window clicked");
+    window.addEventListener("click", clicked);
+    // return a clean-up function
+    return () => {
+      window.removeEventListener("click", clicked);
+    };
+  }, []);
+  return (
+    <div className='flex justify-center p-3 bg-[#11161b] shadow-lg rounded-xl dark:bg-[#1d2229]'>
+      When you click the window you'll find a message logged to the console
+    </div>
+  );
+};
+
+<EffectCleanup />
+
+## Multiple effects
+
+Multiple `useEffect` calls can happen within a functional component, as shown below:
+
+```jsx showLineNumbers
+const MultipleEffects = () => {
+  // 🍟
+  useEffect(() => {
+    const clicked = () => console.log("window clicked");
+    window.addEventListener("click", clicked);
+    return () => {
+      window.removeEventListener("click", clicked);
+    };
+  }, []);
+  // 🍟 another useEffect hook
+  useEffect(() => {
+    console.log("another useEffect call");
+  });
+  return <div>Check your console logs</div>;
+};
+```
+
+<Callout type='info'>
+  `useEffect` calls can be skipped i.e not invoked on every render. This is done
+  by passing a second array argument to the effect function.
+</Callout>
+
+## Skipping effects (array dependency)
+
+```jsx showLineNumbers
+const ArrayDepMount1 = () => {
+  const [randomNumber, setRandomNumber] = useState(0);
+  const [effectLogs, setEffectLogs] = useState([]);
+  useEffect(() => {
+    setEffectLogs((prevEffectLogs) => [...prevEffectLogs, "effect invoked"]);
+  }, []);
+  return (
+    <div>
+      <h1>{randomNumber}</h1>
+      <button
+        onClick={() => {
+          setRandomNumber(Math.random());
+        }}>
+        Generate random number!
+      </button>
+      <div>
+        {effectLogs.map((effect, index) => (
+          <div key={index}>{"⭐".repeat(index) + effect}</div>
+        ))}
+      </div>
+    </div>
+  );
+};
+```
+
+In the example above, `useEffect` is passed an array of one value: `[randomNumber]`.
+
+Thus, the effect function will be called on mount and whenever a new random number is generated.
+
+Here’s the Generate random number button being clicked and the effect function being rerun upon generating a new random number:
+
+export const ArrayDepMount1 = () => {
+  const [randomNumber, setRandomNumber] = useState(0);
+  const [effectLogs, setEffectLogs] = useState([]);
+  useEffect(() => {
+    setEffectLogs((prevEffectLogs) => [...prevEffectLogs, "effect invoked"]);
+  }, [randomNumber]);
+  return (
+    <div className='flex flex-col justify-center p-3 bg-[#11161b] shadow-lg rounded-xl dark:bg-[#1d2229]'>
+      <h1>{randomNumber}</h1>
+      <button
+        className={styles.counter}
+        onClick={() => {
+          setRandomNumber(Math.random());
+        }}>
+        Generate random number!
+      </button>
+      <div>
+        {effectLogs.map((effect, index) => (
+          <div key={index}>{"⭐".repeat(index) + effect}</div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+<ArrayDepMount1 />
+
+## Skipping effects (empty array dependency)
+
+In this example, `useEffect` is passed an empty array `[]`. Therefore, the effect function will be called only on mount.
+
+```jsx showLineNumbers
+const ArrayDepMount2 = () => {
+  const [randomNumber, setRandomNumber] = useState(0);
+  const [effectLogs, setEffectLogs] = useState([]);
+  useEffect(() => {
+    setEffectLogs((prevEffectLogs) => [
+      ...prevEffectLogs,
+      "effect fn has been invoked",
+    ]);
+  }, []);
+  return (
+    <div>
+      <h1>{randomNumber}</h1>
+      <button
+        onClick={() => {
+          setRandomNumber(Math.random());
+        }}>
+        Generate random number!
+      </button>
+      <div>
+        {effectLogs.map((effect, index) => (
+          <div key={index}>{"⭐".repeat(index) + effect}</div>
+        ))}
+      </div>
+    </div>
+  );
+};
+```
+
+Renders:
+
+export const ArrayDepMount2 = () => {
+  const [randomNumber, setRandomNumber] = useState(0);
+  const [effectLogs, setEffectLogs] = useState([]);
+  useEffect(() => {
+    setEffectLogs((prevEffectLogs) => [
+      ...prevEffectLogs,
+      "effect fn has been invoked",
+    ]);
+  }, []);
+  return (
+    <div className='flex flex-col justify-center p-3 bg-[#11161b] shadow-lg rounded-xl dark:bg-[#1d2229]'>
+      <h1>{randomNumber}</h1>
+      <button
+        className={styles.counter}
+        onClick={() => {
+          setRandomNumber(Math.random());
+        }}>
+        Generate random number!
+      </button>
+      <div>
+        {effectLogs.map((effect, index) => (
+          <div key={index}>{"⭐".repeat(index) + effect}</div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+<ArrayDepMount2 />
+
+## Skipping effects (no array dependency)
+
+Without an array dependency, the effect function will be run after every single render.
+
+```jsx showLineNumbers
+useEffect(() => {
+console.log(“This will be logged after every render!”)
+})
+```

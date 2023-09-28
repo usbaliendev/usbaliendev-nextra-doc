@@ -1,0 +1,77 @@
+import { Callout } from "nextra/components";
+import { useLayoutEffect, useState } from "react";
+import styles from "../../../../../components/counters.module.css";
+
+`useLayoutEffect` has the very same signature as `useEffect`. We’ll discuss the difference between `useLayoutEffect` and `useEffect` below.
+
+## Similar usage as `useEffect`
+
+Here’s the same example for `useEffect` built with `useLayoutEffect`:
+
+## Basic side effect
+
+```jsx
+useLayoutEffect(() => {
+  //do something
+}, [arrayDependency]);
+```
+
+```jsx
+const ArrayDep1 = () => {
+  const [randomNumber, setRandomNumber] = useState(0);
+  const [effectLogs, setEffectLogs] = useState([]);
+  useLayoutEffect(() => {
+    setEffectLogs((prevEffectLogs) => [
+      ...prevEffectLogs,
+      "effect fn has been invoked",
+    ]);
+  }, [randomNumber]);
+  return (
+    <div className='p-6 shadow-lg rounded-xl nx-border-black nx-border-opacity-[0.04] nx-bg-opacity-[0.03] nx-bg-black nx-break-words nx-rounded-md nx-border nx-py-0.5 nx-px-[.25em] nx-text-[.9em] dark:nx-border-white/10 dark:nx-bg-white/10'>
+      <h1>{randomNumber}</h1>
+      <button
+        className={styles.counter}
+        onClick={() => {
+          setRandomNumber(Math.random());
+        }}>
+        Generate random number!
+      </button>
+      <div>
+        {effectLogs.map((effect, index) => (
+          <div key={index}>{"🍔".repeat(index) + effect}</div>
+        ))}
+      </div>
+    </div>
+  );
+};
+```
+
+export const ArrayDep1 = () => {
+  const [randomNumber, setRandomNumber] = useState(0);
+  const [effectLogs, setEffectLogs] = useState([]);
+  useLayoutEffect(() => {
+    setEffectLogs((prevEffectLogs) => [
+      ...prevEffectLogs,
+      "effect fn has been invoked",
+    ]);
+  }, [randomNumber]);
+  return (
+    <div className='p-6 shadow-lg rounded-xl nx-border-black nx-border-opacity-[0.04] nx-bg-opacity-[0.03] nx-bg-black nx-break-words nx-rounded-md nx-border nx-py-0.5 nx-px-[.25em] nx-text-[.9em] dark:nx-border-white/10 dark:nx-bg-white/10'>
+      <h1>{randomNumber}</h1>
+      <button
+        className={styles.counter}
+        onClick={() => {
+          setRandomNumber(Math.random());
+        }}>
+        Generate random number!
+      </button>
+      <div>
+        {effectLogs.map((effect, index) => (
+          <div key={index}>{"🍔".repeat(index) + effect}</div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+<ArrayDep1 />

@@ -49,14 +49,14 @@ const handleClickY = () => setIdade(idade - 1);
 
 return (
 
-<div className='p-6 bg-[#11161b] shadow-lg rounded-xl dark:bg-[#1d2429] '>
+<div className='p-6 bg-[#11161b] shadow-lg rounded-xl dark:bg-[#1d2229]'>
   Hoje eu tenho <strong>{idade}</strong> anos
   <div className='flex justify-evenly mt-2 text-base font-medium'>
-    <button onClick={handleClickO} className={styles.counter}>
+    <button className={styles.counter} onClick={handleClickO}>
       Ficar mais velho!
     </button>
     <br />
-    <button onClick={handleClickY} className={styles.counter}>
+    <button className={styles.counter} onClick={handleClickY}>
       Rejuvenescer!
     </button>
   </div>
@@ -124,10 +124,8 @@ return (
 
 <div class='p-6  bg-[#111b1b] shadow-lg rounded-xl dark:bg-[#1d2229]'>
   <h3 class='text-s '>
-    <p>
-      Today I am <strong>{age}</strong> Years of Age <br />I have{" "}
-      <strong>{siblingsNum}</strong> siblings
-    </p>
+    Today I am <strong>{age}</strong> Years of Age <br />I have{" "}
+    <strong>{siblingsNum}</strong> siblings
   </h3>
   <div className='flex justify-evenly mt-2 text-base font-medium'>
     <button onClick={handleClick.bind(null, "age")} className={styles.counter}>
@@ -143,3 +141,62 @@ return (
 ); };
 
 <StateObject />
+
+## Functional setState
+
+The updater function returned from invoking `useState` can also take a function similar to the good ol’ `setState`:
+
+```jsx
+const [value, updateValue] = useState(0);
+// both forms of invoking "updateValue" below are valid 👇
+updateValue(1);
+updateValue((previousValue) => previousValue + 1);
+```
+
+This is ideal when the state update depends on some previous value of state.
+
+```jsx
+const CounterFnSetState = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <>
+      <p>Count value is: {count}</p>
+      <button onClick={() => setCount(0)}>Reset</button>
+      <button onClick={() => setCount((prevCount) => prevCount + 1)}>
+        Plus (+)
+      </button>
+      <button onClick={() => setCount((prevCount) => prevCount - 1)}>
+        Minus (-)
+      </button>
+    </>
+  );
+};
+```
+
+Renders:
+
+export const CounterFnSetState = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <div class='p-6  bg-[#111b1b] shadow-lg rounded-xl dark:bg-[#1d2229]'>
+      <p>Count value is: {count}</p>
+      <div className='flex justify-evenly mt-2 text-base font-medium'>
+        <button className={styles.counter} onClick={() => setCount(0)}>
+          Reset
+        </button>
+        <button
+          className={styles.counter}
+          onClick={() => setCount((prevCount) => prevCount + 1)}>
+          Plus (+)
+        </button>
+        <button
+          className={styles.counter}
+          onClick={() => setCount((prevCount) => prevCount - 1)}>
+          Minus (-)
+        </button>
+      </div>
+    </div>
+  );
+};
+
+<CounterFnSetState />

@@ -1,0 +1,70 @@
+import { Callout } from "nextra/components";
+import React, { useContext } from "react";
+import styles from "../../../../../components/counters.module.css";
+
+`useContext` saves you the stress of having to rely on a Context consumer. React Context has a simpler API when compared to `MyContext.Consumer` and the render props API it exposes.
+
+Context is React’s way of [handling shared data between multiple components](https://blog.logrocket.com/react-reference-guide-context-api/).
+
+The following example highlights the difference between consuming a context object value via `useContext` or `Context.Consumer`:
+
+<Callout type='info'>
+In react 18 update the `<StrictMoode>` makes the react execute some testings prior the main rendering causing 2 renders each beginning (disable or comment it, if needed).
+</Callout>
+
+```jsx showLineNumbers
+// example Context object
+const ThemeContext = React.createContext("dark");
+// usage with context Consumer
+function Button() {
+  return (
+    <ThemeContext.Consumer>
+      {(theme) => <button className={theme}> Amazing button </button>}
+    </ThemeContext.Consumer>
+  );
+}
+// usage with useContext hook
+import { useContext } from "react";
+function ButtonHooks() {
+  const theme = useContext(ThemeContext);
+  return <button className={theme}>Amazing button</button>;
+}
+```
+
+```jsx showLineNumbers
+const ThemeContext = React.createContext("light");
+const Display = () => {
+  const theme = useContext(ThemeContext);
+  return (
+    <div
+      className='p-3 mx-auto text-center rounded-xl w-1/3 min-h-[50px]'
+      style={{
+        background: theme === "dark" ? "black" : "papayawhip",
+        color: theme === "dark" ? "white" : "palevioletred",
+      }}>
+      {"The theme here is " + theme}
+    </div>
+  );
+};
+```
+
+Renders:
+
+export const Display = () => {
+  const ThemeContext = React.createContext("dark");
+  const theme = useContext(ThemeContext);
+  return (
+    <div
+      className='p-3 mx-auto font-bold text-center rounded-xl w-1/3 min-h-[50px]'
+      style={{
+        background:
+          theme === "dark" ? "#171f29" : theme === "light" ? "#e0feff" : null,
+        color:
+          theme === "dark" ? "#0266da" : theme === "light" ? "#12a8ab" : null,
+      }}>
+      {"The theme here is " + theme}
+    </div>
+  );
+};
+
+<Display />
