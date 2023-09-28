@@ -1,10 +1,10 @@
-# Nextra Docs Template 
+# Nextra Docs Template
 
-This is a template for creating documentation with [Nextra](https://nextra.site).
+This is my personal library of codes, knowlegde and tools, this project will constanlty be updated. This lib site was made using [Nextra](https://nextra.site).
 
-[**Live Demo →**](https://nextra-docs-template.vercel.app)
+[**Live Site→**](https://usbaliendev-doc.vercel.app/docs)
 
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
+[![](./public/assets/Screenshot_1.png)](https://usbaliendev-doc.vercel.app/docs)
 
 ## Quick Start
 
