@@ -1,0 +1,225 @@
+This is all the JavaScript basics and fundamentals everyone should know to start learning react. So i compiled all the topics with definition and code examples below.
+
+# Arrow Functions
+
+Arrow functions in JavaScript are a concise way to write functions, introduced in ECMAScript 6 (ES6). Here's a summarized explanation of arrow functions:
+
+1. Syntax: Arrow functions have a compact syntax using the => (fat arrow) operator.
+
+2. No "this" Binding: Unlike traditional functions, arrow functions do not have their own this binding. They inherit the this value from the surrounding code (lexical scoping). This behavior can simplify code in certain cases.
+
+3. Implicit Return: If the arrow function consists of a single expression, you can omit the curly braces {} and the return keyword. The value of the expression is automatically returned.
+
+4. No Arguments Object: Arrow functions do not have their own arguments object. Instead, they inherit the arguments object from the enclosing function.
+
+5. Use Cases:
+
+- Ideal for simple, short functions, such as callback functions or functions within array methods like map, filter, and reduce.
+- Helpful for maintaining the value of this in functions used as callbacks or event handlers.
+
+Example of an arrow function:
+
+```js
+// Traditional function
+function DoSomething(a, b) {
+  return a + b;
+}
+// Arrow function with implicit return
+const addArrow = (a, b) => a + b;
+// Empty one
+const DoSomething = () => {};
+// Anonimous Function on buttons or events
+<button
+  onClick={() => {
+    console.log("Hello world");
+  }}></button>;
+```
+
+Arrow functions provide a more concise and readable way to write functions in JavaScript, particularly for short and simple operations. However, they may not be suitable for every situation, especially when you need access to their own this context or the arguments object.
+
+# Ternary Operators
+
+A ternary operator in JavaScript is a concise way to write a conditional expression. It's often referred to as the "conditional operator" because it allows you to conditionally choose one of two values or expressions based on a provided condition. Here's a summarized explanation of ternary operators:
+
+1. Syntax: The ternary operator has the following syntax:
+
+```js
+condition ? expressionIfTrue : expressionIfFalse;
+```
+
+2. Usage: It's used to make quick and simple decisions in code based on a condition.
+
+3. Evaluation: The condition (the part before the ?) is evaluated first. If it's true, the expression immediately after the ? is executed; otherwise, the expression after the : is executed.
+
+4. Return Value: The result of the chosen expression is the final value of the entire ternary expression.
+
+Example of a ternary operator:
+
+```js
+const age = 25;
+const canVote = age >= 18 ? "Yes" : "No";
+
+console.log(canVote); // Outputs "Yes"
+```
+
+## Conditional rendering with ternary operators:
+
+```js
+let age = 25;
+let name = "Angelo S. Dorfey";
+const Component = () => {
+  return age < 18 ? <p>Angelo is a minor</p> : <p>Angelo is above legal age</p>;
+};
+```
+
+# Objects
+
+## Destructuring
+
+Destructuring in JavaScript is a feature that allows you to extract values from objects or arrays and assign them to variables in a concise and structured way. Here's a summarized explanation of destructuring:
+
+1. Object Destructuring:
+
+- Syntax: `{ variable1, variable2 } = object`
+- Purpose: Extract values from an object and assign them to variables with matching property names.
+
+```js
+const person = { firstName: "John", lastName: "Doe" };
+const { firstName, lastName } = person;
+console.log(firstName); // Outputs "John"
+```
+
+2. Array Destructuring:
+
+- Syntax: `[ variable1, variable2 ] = array`
+- Purpose: Extract values from an array and assign them to variables based on their order in the array.
+
+```js
+const colors = ["red", "green", "blue"];
+const [firstColor, secondColor] = colors;
+console.log(firstColor); // Outputs "red"
+```
+
+3. Default Values:
+
+- You can specify default values when using destructuring, which will be assigned if the extracted value is `undefined`.
+
+```js
+const { city = "Unknown" } = person;
+console.log(city); // Outputs "Unknown" if the property doesn't exist in the object
+```
+
+4. Nested Destructuring:
+
+- Destructuring can also be applied to nested objects and arrays to extract values from deeper structures.
+
+```js
+const nestedObject = { outer: { inner: "value" } };
+const {
+  outer: { inner },
+} = nestedObject;
+console.log(inner); // Outputs "value"
+```
+
+5. Rest Syntax:
+
+- The rest syntax (...) allows you to gather remaining elements into an array when destructuring. It's useful for working with arrays and objects of variable lengths.
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+const [first, ...rest] = numbers;
+console.log(rest); // Outputs [2, 3, 4, 5]
+const numbers2 = [...numbers, 6, 7]; // Adds 6 and 7 to the rest of the numbers array
+```
+
+Destructuring simplifies code by providing a convenient way to extract and assign values, making it particularly useful when working with complex data structures like objects and arrays. It enhances code readability and reduces the need for repetitive property or element access.
+
+# Map, Filter and Reduce
+
+These are three functions which facilitate a functional approach to programming. We will discuss them one by one and understand their use cases.
+
+## Map Function
+
+- Purpose: `map()` is used for creating a new array by applying a function to each element of an existing array.
+  Syntax: `array.map(callback(element, index, array))`
+
+```js
+const numbers = [1, 2, 3];
+const doubled = numbers.map((num) => num * 2);
+console.log(doubled); // Outputs [2, 4, 6]
+```
+
+## Filter Function
+
+- Purpose: `filter()` is used for creating a new array containing elements that satisfy a given condition.
+  Syntax: `array.filter(callback(element, index, array))`
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+const evenNumbers = numbers.filter((num) => num % 2 === 0);
+console.log(evenNumbers); // Outputs [2, 4]
+```
+
+## Reduce Function
+
+- Purpose: `reduce()` is used for aggregating the elements of an array into a single value, often used for summing, counting, or any custom accumulation.
+  Syntax: `array.reduce(callback(accumulator, currentValue, index, array), initialValue)`
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((acc, num) => acc + num, 0);
+console.log(sum); // Outputs 15 (sum of all numbers)
+```
+
+ℹ️ In this example, 0 is provided as the initial value for the accumulator (acc). The reduce() function starts accumulating from this initial value.
+
+These array methods provide a declarative and concise way to work with arrays, making your code more readable and expressive. They are crucial for functional programming paradigms in JavaScript and are commonly used for a wide range of data transformation tasks.
+
+# Async, Await and Fetch
+
+## Async and Await
+
+- `async and await` are features in JavaScript used for working with asynchronous code in a more synchronous-like manner.
+- `async` is used to declare a function as asynchronous, which allows it to use `await`.
+- `await` is used inside an `async` function to pause the execution of the function until a Promise is resolved.
+  Together, they simplify the handling of Promises and make asynchronous code more readable and structured.
+
+```js
+async function fetchData() {
+  try {
+    const response = await fetch("https://api.example.com/data");
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+```
+
+## Fetch
+
+- `fetch()` is a built-in JavaScript function used for making HTTP requests to retrieve data from a server or API.
+
+- It returns a Promise that resolves to the Response object representing the response to the request.
+
+- You can use methods like `.json()` to extract data from the response.
+
+```js
+fetch("https://api.example.com/data")
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+```
+
+- In modern JavaScript, `fetch()` is often combined with async/await for cleaner and more readable code.
+
+So `async`, `await`, and `fetch()` are essential tools for dealing with asynchronous operations in JavaScript, especially when working with data from APIs. They help manage asynchronous code flow and improve the overall readability and maintainability of your code.

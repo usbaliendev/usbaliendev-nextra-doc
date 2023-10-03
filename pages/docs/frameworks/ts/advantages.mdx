@@ -1,0 +1,138 @@
+import React from "react";
+
+# Advantages over JavaScript
+
+Here's a summarized explanation of TypeScript and its advantages over plain JavaScript.
+
+## Type Safety
+
+TypeScript's static typing helps catch type-related errors early in the development process, reducing runtime bugs and improving code reliability.
+
+```tsx showLineNumbers
+const users = [
+  { name: "Angelo", school: { name: "CEUB", location: "Brazil" } },
+  { name: "Shelly", school: { name: "Different school", location: "Brazil" } },
+  { name: "James", school: null },
+];
+// Por exemplo em users teremos um erro ao tentar acessar school do terceito obj pois school é null. Ao setar os typos das variaveis você pode prevenir erros de tipagem e null
+
+function Whyuse() {
+  return (
+    <div>
+      {users.map((user) => {
+        return (
+          <div>
+            <h1>Name: {user.name}</h1>
+            {/* <h1>School: {user.school.name}</h1> // Isso gera um erro porque school aparece como null e valor não pode ser acessado */}
+            <h1>School: {user.school?.name}</h1>
+            {/* O jeito correto de contornar esse problema é o uso do simbolo ?, que coloca uma condicional de checar se aquela prop existe e apenas na copndicao de true, validar o codigo */}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export default Whyuse;
+```
+
+## Enhanced Tooling (Auto-Completion)
+
+TypeScript's tooling support, including code editors like Visual Studio Code, offers features like auto-completion and refactoring tools, which can significantly boost developer productivity.
+
+```tsx showLineNumbers
+import React from "react";
+
+interface Country {
+  name: string;
+  continent: string;
+}
+
+interface User {
+  id: string;
+  name: string;
+  country: Country;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  getName: () => string;
+  user: User;
+}
+
+function ComplexComponent(props: Props) {
+  const [name, setName] = React.useState<string>("");
+
+  const onCLick = () => {
+    const name = props.getName?.();
+    setName(name || "");
+  };
+
+  return (
+    <div>
+      <h1>{props.title}</h1>
+      <p>{props.description}</p>
+      <button onClick={onCLick}>Click here</button>
+      <p>{props.user.id}</p>
+      <p>{props.user.name}</p>
+      <p>{props.user.country.name}</p>
+      <p>{props.user.country.continent}</p>
+    </div>
+  );
+}
+
+export default ComplexComponent;
+```
+
+## Better Code Maintainability (Oganization)
+
+Type annotations and interfaces provide clear documentation and enforce coding standards, making it easier to maintain and collaborate on projects.
+
+```tsx showLineNumbers
+import React from "react";
+
+// In TypeScript, the "interface" is a fundamental construct used to define the shape or structure of objects, specifying what properties and methods an object should have. It serves the purpose of defining contracts or blueprints for object shapes, enabling type checking and providing a clear structure for code.
+
+interface Person {
+  firstName: string;
+  lastName: string;
+  age: number;
+  // Setting this typo as optional with ?
+  getCountry?: () => string;
+}
+
+function greet(person: Person) {
+  console.log(`Hello, ${person.firstName} ${person.lastName}!`);
+}
+
+const angelo: Person = {
+  firstName: "Angelo",
+  lastName: "S. Dorfey",
+  age: 25,
+};
+
+function ComplexComponent(person: Person) {
+  const [country, setCountry] = React.useState<string>("");
+  const onCLick = () => {
+    // By putting ?. before the function prop we're specifying that it might not exist and it will only behave if true
+    const country = person.getCountry?.();
+    // If name might be undefined because the function can be null, we need to make a case that it will be set as an empty string as a conditional
+    setCountry(country || "");
+  };
+
+  greet(angelo); // Type-checked and works as expected
+
+  return (
+    <div>
+      <h1>{person.firstName}</h1>
+      <p>{person.lastName}</p>
+      <p>{person.age}</p>
+      <button onClick={onCLick}>Click here</button>
+      <p>{country}</p>
+    </div>
+  );
+}
+
+export default ComplexComponent;
+```

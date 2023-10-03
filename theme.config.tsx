@@ -31,7 +31,7 @@ const config: DocsThemeConfig = {
   primaryHue: { dark: 212, light: 181 },
   primarySaturation: 100,
   editLink: {
-    text: "Edit this page on GitHub →",
+    text: " ",
   },
   feedback: {
     content: null,

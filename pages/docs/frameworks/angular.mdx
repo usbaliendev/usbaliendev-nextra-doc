@@ -1,0 +1,68 @@
+import { Callout } from "nextra/components";
+
+<Callout type='warning' emoji='⚠️'>
+  This page is under construction.
+</Callout>
+
+AngularJS is a JavaScript-based open-source front-end web application framework that was originally developed by Google. It's designed for building dynamic, single-page web applications (SPAs) by providing a structured and organized way to develop complex client-side applications. Here's a summarized explanation of AngularJS and its folder structure:
+
+## Features
+
+- **Framework for Dynamic Web Apps:** AngularJS extends HTML with new attributes and provides a powerful set of features for building dynamic, client-side web applications.
+- **Two-way Data Binding:** AngularJS allows for automatic synchronization of data between the model (JavaScript objects) and the view (HTML elements), making it easier to manage application state.
+- **Dependency Injection:** It has a built-in dependency injection system, which helps manage and organize components, making code more modular and testable.
+- **Directives:** AngularJS introduces custom HTML attributes called directives, enabling developers to create reusable components and add behavior to HTML elements.
+- **Routing:** It offers client-side routing capabilities, allowing developers to create multi-page applications with deep linking.
+
+## Folder Structure (AngularJS 1.x):
+
+AngularJS 1.x projects typically follow a folder structure like this:
+
+1. `app`
+
+- This directory typically contains your AngularJS application code.
+- It's where you define modules, controllers, services, and other AngularJS components.
+
+2. `index.html`
+
+- The main HTML file that serves as the entry point to your AngularJS application.
+- It often includes script tags to load AngularJS libraries and your application's scripts.
+
+3. `scripts`
+
+- This directory may contain your JavaScript files.
+- You can organize your AngularJS components (controllers, services, directives) into separate files.
+
+4. `styles` (optional):
+
+- If you use CSS or a CSS preprocessor like Sass or Less, this folder can contain your stylesheet files.
+
+5. `lib` (optional):
+
+- You might place third-party libraries and dependencies here.
+
+6. `node_modules`
+
+- Created when you install project dependencies using npm or another package manager.
+
+7. `bower_components` (optional)
+
+- If you use Bower for front-end package management, this directory may contain third-party libraries.
+
+8. `tests` (optional)
+
+- You can organize your unit tests or end-to-end tests in this folder.
+
+9. `partials` (optional)
+
+- If your application uses partial HTML templates, they may be stored here.
+
+10. `config` (optional)
+
+- This directory may contain configuration files or scripts for your application.
+
+11. `assets` (optional)
+
+- You can store static assets like images, fonts, or other files used in your application.
+
+Keep in mind that this folder structure is a general guideline, and you can adapt it to suit your project's specific needs. AngularJS 1.x has been largely succeeded by Angular (Angular 2+), which uses a different folder structure and has significant architectural differences. If you're starting a new project, you might want to consider using the latest version of Angular (Angular 12 at the time of my knowledge cutoff in September 2021) for modern web development.

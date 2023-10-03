@@ -1,5 +1,51 @@
 import { Callout } from "nextra/components";
+import { Card, Cards } from "nextra/components";
+import Arr from "./ts/_meta.json";
 
-<Callout type='warning' emoji='⚠️'>
-  This page is under construction.
-</Callout>
+export const TsLinks = () => {
+  var cmdObj = JSON.parse(JSON.stringify(Arr));
+  // console.log(typeof cmdObj, cmdObj);
+  return (
+    <Cards>
+      {Object.keys(cmdObj).map((key) => (
+        <Card key={key} title={`${cmdObj[key]}`} href={`/docs/styles/${key}`} />
+      ))}
+    </Cards>
+  );
+};
+
+<TsLinks />
+
+TypeScript is a statically typed superset of JavaScript, designed to enhance the development experience by adding optional static typing and other features. Here's a summarized explanation of TypeScript and its advantages over plain JavaScript:
+
+## TypeScript
+
+- **Static Typing:** TypeScript allows developers to define types for variables, function parameters, and return values. This helps catch type-related errors at compile-time, reducing bugs and improving code quality.
+
+- **Strong Tooling:** TypeScript offers a rich set of development tools, such as code editors, IDEs, and linters, that provide features like auto-completion, type checking, and code navigation, enhancing developer productivity.
+
+- **Modern Language Features:** TypeScript supports the latest ECMAScript features and syntax, making it compatible with the latest JavaScript standards.
+
+- **Interfaces and Type Definitions:** TypeScript provides interfaces and type definitions, enabling developers to define clear contracts for object shapes and complex types, improving code maintainability and documentation.
+
+- **Enhanced Readability:** Static typing and type annotations in TypeScript make code more self-documenting, making it easier for developers to understand codebases and collaborate on projects.
+
+- **Improved Refactoring:** TypeScript's static analysis capabilities make it safer to perform large-scale code refactorings, as it can detect potential issues introduced by changes.
+
+## Advantages over JavaScript
+
+1. **Type Safety:** TypeScript's static typing helps catch type-related errors early in the development process, reducing runtime bugs and improving code reliability.
+
+2. **Enhanced Tooling:** TypeScript's tooling support, including code editors like Visual Studio Code, offers features like auto-completion and refactoring tools, which can significantly boost developer productivity.
+
+3. **Better Code Maintainability:** Type annotations and interfaces provide clear documentation and enforce coding standards, making it easier to maintain and collaborate on projects.
+
+4. **Compatibility:** TypeScript is a superset of JavaScript, meaning that existing JavaScript code can be gradually migrated to TypeScript without major changes. You can freely use JavaScript libraries in TypeScript projects.
+
+5. **Readability:** Type annotations and clear contracts (interfaces) make code more readable and self-explanatory.
+
+6. **Community and Ecosystem:** TypeScript has a growing and active community, and it's widely adopted in modern web development, ensuring access to a large ecosystem of libraries and tools.
+
+7. **Scalability:** TypeScript is particularly useful for large-scale applications, where type checking helps manage complexity and maintainability.
+
+While TypeScript offers these advantages, it's essential to note that there is a learning curve associated with adopting static typing, and not all projects may benefit equally from it. The choice between TypeScript and plain JavaScript depends on project requirements, team expertise, and development goals.

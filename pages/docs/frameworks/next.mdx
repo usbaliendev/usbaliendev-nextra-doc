@@ -1,9 +1,96 @@
-# Next.js
-
-Next.js is an open-source JavaScript framework built on React that simplifies and enhances the development of web applications. It excels in server-side rendering, improving page load times and SEO, while also providing dynamic routing, code splitting, and a seamless developer experience. Whether you're building a static website or a complex, data-driven application, Next.js offers a versatile and powerful platform for web development.
-
-import { Callout } from "nextra/components";
+import { Callout, FileTree } from "nextra/components";
 
 <Callout type='warning' emoji='⚠️'>
   This page is under construction.
 </Callout>
+
+# Next.js
+
+Next.js is an open-source JavaScript framework built on React that simplifies and enhances the development of web applications. It excels in server-side rendering, improving page load times and SEO, while also providing dynamic routing, code splitting, and a seamless developer experience. Whether you're building a static website or a complex, data-driven application, Next.js offers a versatile and powerful platform for web development.
+
+## Folder Structure
+
+Here's a summarized explanation of the common folder and file structure in a Next.js project:
+
+<FileTree>
+  <FileTree.Folder name='app' defaultOpen>
+    <FileTree.Folder name='api' />
+    <FileTree.Folder name='components' defaultOpen>
+      <FileTree.Folder name='elements' />
+      <FileTree.Folder name='modules' />
+      <FileTree.Folder name='layouts' />
+    </FileTree.Folder>
+    <FileTree.Folder name='context' />
+    <FileTree.Folder name='hooks' />
+    <FileTree.Folder name='styles' />
+    <FileTree.Folder name='utils' />
+  </FileTree.Folder>
+  <FileTree.Folder name='pages' defaultOpen>
+    <FileTree.File name='404.tsx' />
+    <FileTree.File name='_app.tsx' />
+    <FileTree.File name='_document.tsx' />
+    <FileTree.File name='_error.tsx' />
+    <FileTree.File name='index.tsx' />
+  </FileTree.Folder>
+  <FileTree.Folder name='public' defaultOpen>
+    <FileTree.Folder name='images' />
+    <FileTree.File name='robots.txt' />
+    <FileTree.File name='favicon.ico' />
+  </FileTree.Folder>
+  <FileTree.File name='next.config.js' />
+  <FileTree.File name='package.json' />
+  <FileTree.File name='.env' />
+  <FileTree.File name='.env.local' />
+  <FileTree.File name='next-env.d.ts' />
+  <FileTree.File name='tsconfig.json' />
+  <FileTree.File name='jsconfig.json' />
+</FileTree>
+
+1. `/pages`
+
+- This directory is central to Next.js and contains your application's pages.
+- Each JavaScript or TypeScript file in this directory represents a route or a page in your application. For example, `index.js` or `about.tsx` corresponds to routes like `/` and `/about`.
+
+2. `/public`
+
+- This directory is meant for static assets like images, fonts, and other files that you want to serve directly.
+- Files placed in this directory are accessible via their URL path, like `/public/logo.png`.
+
+3. `/styles`
+
+- This directory is used for styling your application.
+  Commonly, you'll find CSS, Sass, or SCSS files here.
+
+4. `/components`
+
+- This directory can hold reusable React components used across different pages of your application.
+- Organizing components separately helps maintain a modular and structured codebase.
+
+5. `/api` (optional)
+
+- This directory is for creating serverless API endpoints using serverless functions.
+- Each .js or .ts file in this directory can define an API route accessible at `/api/{filename}`.
+
+6. `/node_modules`
+
+- This directory is created when you install project dependencies using a package manager like npm or Yarn.
+- It contains all the libraries and packages your project depends on.
+
+7. `/package.json`
+
+- This file lists project metadata and dependencies.
+- It includes scripts for running, building, and deploying your Next.js application.
+
+8. `/next.config.js` (optional)
+
+- This file is used to configure various aspects of your Next.js application, such as custom Webpack configurations, environment variables, and more.
+
+9. `**/tsconfig.json or /jsconfig.json` (optional)
+
+- If you're using TypeScript or JavaScript, respectively, you may have a configuration file for setting up compiler options and type checking.
+
+10. `/README.md`
+
+- A readme file typically provides documentation and information about your project.
+
+This is a basic outline of a typical Next.js folder and file structure. Depending on your project's complexity and requirements, you may have additional directories and files. Keep in mind that Next.js encourages convention over configuration, making it easier to get started quickly while still allowing flexibility for customization.

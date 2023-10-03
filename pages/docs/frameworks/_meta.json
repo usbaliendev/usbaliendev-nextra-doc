@@ -1,8 +1,8 @@
 {
   "js": "JavaScript",
   "ts": "TypeScript",
-  "react": "⚛️ ⏐ React.js",
+  "angular": "Angular.js",
   "next": "Next.js",
-  "vue": "Vue.js",
-  "svelte": "Svelte.js"
+  "react": "⚛️ ⏐ React.js",
+  "vue": "Vue.js"
 }
